@@ -5,4 +5,4 @@ from apps.financial.models import Transaction
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
-        fields = ('type', 'value', 'user', 'inserted_at')
+        fields = ('id', 'type', 'value', 'user', 'inserted_at')

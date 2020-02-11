@@ -1,11 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Sum
-from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework import views
 from rest_framework.response import Response
-from rest_framework import viewsets
 from rest_framework import status
 from .models import Transaction
 from .serializers import TransactionSerializer
@@ -20,7 +18,7 @@ class TransactionListByUser(generics.ListAPIView):
         """
         user_id = self.kwargs['user_id']
         user = get_object_or_404(get_user_model(), id=user_id)
-        return Transaction.objects.filter(user=user).order_by('inserted_at').all()
+        return Transaction.objects.filter(user=user).order_by('-inserted_at').all()
 
 
 class TransactionUserBalance(views.APIView):
@@ -38,7 +36,7 @@ class TransactionList(views.APIView):
     """
 
     def get(self, request):
-        transactions = Transaction.objects.order_by('inserted_at').all()
+        transactions = Transaction.objects.order_by('-inserted_at').all()
         serializer = TransactionSerializer(transactions, many=True)
         return Response(serializer.data)
 

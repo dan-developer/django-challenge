@@ -1,11 +1,7 @@
 from django.contrib.auth import get_user_model
-from django.db.models import Sum
-from django.http import Http404
 from django.shortcuts import get_object_or_404
-from rest_framework import generics
 from rest_framework import views
 from rest_framework.response import Response
-from rest_framework import viewsets
 from rest_framework import status
 
 from apps.users.serializers import UserSerializer
@@ -63,3 +59,17 @@ class UserDetail(views.APIView):
         obj = self.get_object(pk)
         obj.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# class UserViewset(viewsets.ModelViewSet):
+#     queryset = get_user_model().objects.all()
+#     serializer_class = UserSerializer
+#
+#     @action(detail=True)
+#     def balance(self, request, pk):
+#         user = self.get_object()
+#         transaction_in_balance = Transaction.objects.filter(user=user, type=Transaction.TYPE_IN).aggregate(Sum('value'))['value__sum'] or 0
+#         transaction_out_balance = Transaction.objects.filter(user=user, type=Transaction.TYPE_OUT).aggregate(Sum('value'))['value__sum'] or 0
+#         return Response({
+#             'balance': float(transaction_in_balance) - float(transaction_out_balance0)
+#         })
