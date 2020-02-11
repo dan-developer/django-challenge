@@ -76,10 +76,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'apps/templates'),
-            os.path.join(BASE_DIR, 'apps/templates/apps'),
-            os.path.join(BASE_DIR, 'apps/templates/third_party/crispy_forms'),
-            os.path.join(BASE_DIR, 'apps/templates/third_party/django_tables2'),
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
