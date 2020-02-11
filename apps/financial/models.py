@@ -20,3 +20,8 @@ class Transaction(models.Model):
         related_name='transactions',
     )
     inserted_at = models.DateTimeField(verbose_name='Inserted at', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Transaction'
+        verbose_name_plural = 'Transactions'
+        db_table = 'transaction'
