@@ -44,6 +44,7 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     'django_challenge',
     'apps.users',
+    'apps.financial',
 ]
 
 THIRD_PARTY_APPS = [
