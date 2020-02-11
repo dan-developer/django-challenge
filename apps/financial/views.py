@@ -7,8 +7,8 @@ from rest_framework import views
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import status
-from apps.financial.models import Transaction
-from apps.financial.serializers import TransactionSerializer
+from .models import Transaction
+from .serializers import TransactionSerializer
 
 
 class TransactionListByUser(generics.ListAPIView):
